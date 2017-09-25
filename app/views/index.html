@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../static/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/normalize.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/skeleton.css" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div class="container">
+      <h4>Add a course</h4>
+      <form class="" action="/courses/add" method="post">
+        <label for="name">Course Name:</label><input type="text" name="name" value="" id="name">
+        <label for="desc">Description:</label><textarea name="description" rows="8" cols="40" id="desc"></textarea>
+        <p><input type="submit" value="add"></p>
+      </form>
+      <table class="u-full-width">
+        <thead>
+          <th>Course Name</th>
+          <th>Description</th>
+          <th>Date Added</th>
+          <th>Actions</th>
+        </thead>
+        <tbody>
+          {% for course in courses %}
+            <tr>
+              <td>{{course.name}}</td>
+              <td>{{course.description}}</td>
+              <td>{{course.created_at}}</td>
+              <td><a href="/delete/{{course.id}}"><button type="button">remove course</button></a></td>
+            </tr>
+          {% endfor %}
+          <!-- /delete/1 -->
+        </tbody>
+      </table>
+    </div>
+
+  </body>
+</html>
